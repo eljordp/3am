@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3AM - Noir Hoodie</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="grain-overlay"></div>
+
+    <nav class="navbar">
+        <a href="/" class="nav-logo">3AM</a>
+        <a href="/" class="nav-back">Close</a>
+    </nav>
+
+    <div class="product-page-container">
+        <div class="product-detail-grid">
+            <div class="product-image-wrapper">
+                <img src="/images/4.png" alt="Noir Hoodie" class="product-img">
+            </div>
+            <div class="product-detail-info">
+                <h1 class="product-detail-title">Noir Hoodie</h1>
+                <span class="product-detail-price">$85.00</span>
+                <p class="product-detail-desc">
+                    Heavyweight embrace. Keep the cold out.
+                    400gsm French Terry. Double-lined hood.
+                    Dropped shoulders for a relaxed silhouette.
+                    <br><br>
+                    Graphic back detail: "Connection"
+                </p>
+                <div class="size-selector">
+                    <select class="size-select" id="size-select">
+                        <option value="S">Size: S</option>
+                        <option value="M">Size: M</option>
+                        <option value="L" selected>Size: L</option>
+                        <option value="XL">Size: XL</option>
+                    </select>
+                </div>
+                <button class="btn-acquire" id="add-to-cart-btn">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 3AM</p>
+    </footer>
+
+    <script type="module">
+        import { addToCart } from './shop.js';
+
+        document.body.style.opacity = '0';
+        document.body.style.transition = 'opacity 1s ease';
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
+        });
+
+        document.getElementById('add-to-cart-btn').addEventListener('click', () => {
+            const size = document.getElementById('size-select').value;
+            const product = {
+                id: 'noir-hoodie',
+                name: 'Noir Hoodie',
+                price: 85.00,
+                image: '/images/4.png',
+                size: size
+            };
+            addToCart(product);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3AM - Collection</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <!-- Grain Overlay -->
+    <div class="grain-overlay"></div>
+
+    <nav class="navbar">
+        <a href="/" class="nav-logo">3AM</a>
+        <a href="/" class="nav-back">Continue</a>
+    </nav>
+
+    <div class="cart-container">
+        <h1 class="cart-title">Your Collection</h1>
+
+        <div id="cart-items-container">
+            <!-- Dynamic Items will be injected here -->
+        </div>
+
+        <div class="cart-summary" id="cart-summary">
+            <div class="cart-total-row">
+                <span>Subtotal</span>
+                <span id="cart-subtotal">$0.00</span>
+            </div>
+            <p class="cart-shipping-note">Shipping calculated at checkout.</p>
+            <button class="btn-acquire btn-checkout">Acquire</button>
+            <div style="text-align: center; margin-top: 1rem;">
+                <a href="/" class="btn-secondary">Continue Shopping</a>
+            </div>
+        </div>
+
+        <!-- Empty State (Hidden by default) -->
+        <div id="empty-state" style="display: none; text-align: center; margin-top: 4rem; color: #888;">
+            <p>Your collection is empty.</p>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="/" class="btn-secondary">Continue Shopping</a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 3AM</p>
+    </footer>
+
+    <script type="module">
+        import { getCart, removeFromCart, formatPrice } from './shop.js';
+
+        // Simple fade in
+        document.body.style.opacity = '0';
+        document.body.style.transition = 'opacity 1s ease';
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
+            renderCart();
+        });
+
+        function renderCart() {
+            const cart = getCart();
+            const container = document.getElementById('cart-items-container');
+            const summary = document.getElementById('cart-summary');
+            const emptyState = document.getElementById('empty-state');
+            const subtotalEl = document.getElementById('cart-subtotal');
+
+            container.innerHTML = ''; // Clear current
+
+            if (cart.length === 0) {
+                summary.style.display = 'none';
+                emptyState.style.display = 'block';
+                return;
+            }
+
+            summary.style.display = 'block';
+            emptyState.style.display = 'none';
+
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                total += parseFloat(item.price);
+                
+                const itemEl = document.createElement('div');
+                itemEl.className = 'cart-item';
+                itemEl.innerHTML = `
+                    <div class="cart-item-image">
+                        <img src="${item.image}" alt="${item.name}">
+                    </div>
+                    <div class="cart-item-details">
+                        <h2 class="cart-item-name">${item.name}</h2>
+                        <p class="cart-item-variant">Size: ${item.size}</p>
+                        <p class="cart-item-price">$${item.price}</p>
+                    </div>
+                    <button class="cart-item-remove" data-index="${index}">✕</button>
+                `;
+                container.appendChild(itemEl);
+            });
+
+            subtotalEl.textContent = formatPrice(total);
+
+            // Re-attach listeners
+            document.querySelectorAll('.cart-item-remove').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const idx = parseInt(e.target.dataset.index);
+                    const itemRow = e.target.closest('.cart-item');
+                    itemRow.style.opacity = '0';
+                    
+                    setTimeout(() => {
+                         removeFromCart(idx);
+                         renderCart(); // Re-render to update indices and total
+                    }, 300);
+                });
+            });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3AM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <!-- Grain Overlay -->
+  <div class="grain-overlay"></div>
+
+  <!-- INTRO OVERLAY -->
+  <section class="intro" id="intro-screen">
+    <div class="intro-content">
+      <p class="intro-text" id="intro-text-1">Are you listening?</p>
+      <button class="btn-enter-site" id="enter-site-btn">ENTER</button>
+    </div>
+  </section>
+
+  <!-- 1. Hero -->
+  <section class="hero">
+    <h1 class="text-hero" id="hero-text">Everything hits harder at 3AM.</h1>
+  </section>
+
+  <!-- 2. Quiet Space -->
+  <section class="quiet-space"></section>
+
+  <!-- 3. Visual Narrative (Backgrounds) -->
+  <!-- 1.jpg -->
+  <section class="parallax-section" style="background-image: url('/images/1.jpg');"></section>
+
+  <div class="parallax-spacer"></div>
+
+  <!-- 2.png REMOVED as requested (conflicts with tee graphic) -->
+  <!-- <section class="parallax-section" style="background-image: url('/images/2.png'); background-position: top center;"></section> -->
+
+  <!-- <div class="parallax-spacer"></div> -->
+
+  <!-- 3.png REMOVED as requested -->
+  <!-- <section class="parallax-section" style="background-image: url('/images/3.png');"></section> -->
+
+  <div class="parallax-spacer"></div>
+
+  <!-- 4. Product: Tee -->
+  <section class="product" id="product-tee">
+    <div class="product-image-container">
+      <!-- Tee Front -->
+      <a href="/tee.html">
+        <img src="/images/tee-front-transparent.png" alt="3AM Tee" class="product-img">
+      </a>
+    </div>
+    <div class="product-info">
+      <h2 class="product-name">Pharmacy Tee</h2>
+      <p class="product-meta">Heavyweight Cotton · Oversized Fit</p>
+      <a href="/tee.html" class="btn-enter">View</a>
+    </div>
+  </section>
+
+  <!-- 5. Product: Hoodie -->
+  <section class="product" id="product-hoodie">
+    <div class="product-image-container">
+      <!-- Hoodie -->
+      <a href="/hoodie.html">
+        <img src="/images/4.png" alt="3AM Hoodie" class="product-img">
+      </a>
+    </div>
+    <div class="product-info">
+      <h2 class="product-name">Noir Hoodie</h2>
+      <p class="product-meta">French Terry · Dropped Shoulder</p>
+      <a href="/hoodie.html" class="btn-enter">View</a>
+    </div>
+  </section>
+
+  <!-- 6. Product: Smoke Tee -->
+  <section class="product" id="product-smoke">
+    <div class="product-image-container">
+      <a href="/smoke-tee.html">
+        <img src="/images/smoke-tee-transparent.png" alt="3AM Smoke Tee" class="product-img">
+      </a>
+    </div>
+    <div class="product-info">
+      <h2 class="product-name">Smoke Tee</h2>
+      <p class="product-meta">Graphic Print · Boxy Fit</p>
+      <a href="/smoke-tee.html" class="btn-enter">View</a>
+    </div>
+  </section>
+
+  <!-- 7. Product: Sweatsuit -->
+  <section class="product" id="product-sweatsuit">
+    <div class="product-image-container">
+      <a href="/sweatsuit.html">
+        <img src="/images/sweatsuit.jpg" alt="3AM Sweatsuit" class="product-img">
+      </a>
+    </div>
+    <div class="product-info">
+      <h2 class="product-name">3AM Sweatsuit</h2>
+      <p class="product-meta">Heavyweight Fleece · Complete Set</p>
+      <a href="/sweatsuit.html" class="btn-enter">View</a>
+    </div>
+  </section>
+
+  <!-- 8. Product: Hills Tee -->
+  <section class="product" id="product-hills">
+    <div class="product-image-container">
+      <a href="/hills-tee.html">
+        <img src="/images/hills-tee.png" alt="Hills Have Eyes Tee" class="product-img">
+      </a>
+    </div>
+    <div class="product-info">
+      <h2 class="product-name">Hills Have Eyes</h2>
+      <p class="product-meta">Vintage Wash · Graphic Print</p>
+      <a href="/hills-tee.html" class="btn-enter">View</a>
+    </div>
+  </section>
+
+  <!-- 9. Philosophy -->
+  <section class="philosophy">
+    <p class="text-hero" style="font-size: clamp(1.5rem, 3vw, 2rem);">
+      Not night. What remains after distraction.
+    </p>
+  </section>
+
+  <!-- 7. Drop Access -->
+  <section class="drop-access">
+    <p class="text-body">When something releases, you’ll know.</p>
+    <form class="email-form" onsubmit="event.preventDefault();">
+      <input type="email" placeholder="email" class="email-input">
+      <button type="submit" class="email-submit">Submit</button>
+    </form>
+  </section>
+
+  <!-- 8. Footer -->
+  <footer class="footer">
+    <p>&copy; 3AM</p>
+  </footer>
+
+  <script type="module" src="./main.js"></script>
+</body>
+
+</html>
