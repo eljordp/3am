@@ -15,6 +15,14 @@
     <!-- Grain Overlay -->
     <div class="grain-overlay"></div>
 
+    <!-- INTRO OVERLAY -->
+    <section class="intro" id="intro-screen">
+        <div class="intro-content">
+            <p class="intro-text" id="intro-text-1">Are you listening?</p>
+            <button class="btn-enter-site" id="enter-site-btn">ENTER</button>
+        </div>
+    </section>
+
     <nav class="navbar">
         <a href="/" class="nav-logo">3AM</a>
         <a href="/" class="nav-back">Continue</a>
@@ -53,7 +61,11 @@
     </footer>
 
     <script type="module">
+        import { initIntro } from './intro.js';
         import { getCart, removeFromCart, formatPrice } from './shop.js';
+
+        // Initialize Intro
+        initIntro();
 
         // Simple fade in
         document.body.style.opacity = '0';
@@ -85,7 +97,7 @@
 
             cart.forEach((item, index) => {
                 total += parseFloat(item.price);
-                
+
                 const itemEl = document.createElement('div');
                 itemEl.className = 'cart-item';
                 itemEl.innerHTML = `
@@ -110,10 +122,10 @@
                     const idx = parseInt(e.target.dataset.index);
                     const itemRow = e.target.closest('.cart-item');
                     itemRow.style.opacity = '0';
-                    
+
                     setTimeout(() => {
-                         removeFromCart(idx);
-                         renderCart(); // Re-render to update indices and total
+                        removeFromCart(idx);
+                        renderCart(); // Re-render to update indices and total
                     }, 300);
                 });
             });

@@ -14,6 +14,14 @@
 <body>
     <div class="grain-overlay"></div>
 
+    <!-- INTRO OVERLAY -->
+    <section class="intro" id="intro-screen">
+        <div class="intro-content">
+            <p class="intro-text" id="intro-text-1">Are you listening?</p>
+            <button class="btn-enter-site" id="enter-site-btn">ENTER</button>
+        </div>
+    </section>
+
     <nav class="navbar">
         <a href="/" class="nav-logo">3AM</a>
         <a href="/" class="nav-back">Close</a>
@@ -56,7 +64,11 @@
 
     <!-- No intro script needed here, but smooth load is good -->
     <script type="module">
+        import { initIntro } from './intro.js';
         import { addToCart } from './shop.js';
+
+        // Initialize Intro
+        initIntro();
 
         // Simple fade in on load
         document.body.style.opacity = '0';
